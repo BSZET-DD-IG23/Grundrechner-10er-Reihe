@@ -42,7 +42,7 @@ class MainWindow(QtWidgets.QWidget):
             return
 
         # ich hasse Python
-        # warum darf ich die Zeile nicht auf eine neue Zeile schreiben
+        # warum darf ich die Bedingung nicht auf mehre Zeilen schreiben
         # fucking whitespace sensitive my ass
         # und nach der funktionalität von Radioknöpfen ist es sowieso nicht möglich
         # aber es ist gefordert :/
