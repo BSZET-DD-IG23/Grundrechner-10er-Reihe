@@ -1,0 +1,7 @@
+# editor files
+.idea
+.vscode
+
+# virtual env files
+.venv
+venv
