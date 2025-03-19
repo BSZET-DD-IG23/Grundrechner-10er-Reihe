@@ -1,5 +1,4 @@
 # Grundrechner 10er Reihe
-Übung Test (19.03.2024)
 
 # Get Started
 1\. Setup Interpreter
