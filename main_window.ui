@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>323</width>
-    <height>286</height>
+    <width>322</width>
+    <height>328</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -55,7 +55,7 @@
     <string>Zahl 2</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pBtn_init">
+  <widget class="QPushButton" name="btnInit">
    <property name="geometry">
     <rect>
      <x>160</x>
@@ -91,7 +91,7 @@
    <property name="checkable">
     <bool>false</bool>
    </property>
-   <widget class="QRadioButton" name="rBtn_add">
+   <widget class="QRadioButton" name="rdbtnAdd">
     <property name="geometry">
      <rect>
       <x>20</x>
@@ -118,7 +118,7 @@
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QRadioButton" name="rBtn_sub">
+   <widget class="QRadioButton" name="rdbtnSub">
     <property name="geometry">
      <rect>
       <x>20</x>
@@ -145,7 +145,7 @@
      <bool>false</bool>
     </property>
    </widget>
-   <widget class="QRadioButton" name="rBtn_multi">
+   <widget class="QRadioButton" name="rdbtnMult">
     <property name="geometry">
      <rect>
       <x>20</x>
@@ -169,7 +169,7 @@
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QRadioButton" name="rBtn_div">
+   <widget class="QRadioButton" name="rdbtnDiv">
     <property name="geometry">
      <rect>
       <x>20</x>
@@ -194,14 +194,40 @@
     </property>
    </widget>
   </widget>
-  <widget class="QLabel" name="lbl_ergebnis">
+  <widget class="QListWidget" name="lstwNumOne">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>40</y>
+     <width>51</width>
+     <height>211</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QListWidget" name="lstwNumTwo">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>40</y>
+     <width>51</width>
+     <height>211</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lblErgebnis">
    <property name="geometry">
     <rect>
      <x>20</x>
      <y>260</y>
      <width>281</width>
-     <height>16</height>
+     <height>39</height>
     </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
    </property>
    <property name="font">
     <font>
@@ -213,26 +239,6 @@
    </property>
    <property name="text">
     <string>Ergebnis: ...</string>
-   </property>
-  </widget>
-  <widget class="QListWidget" name="liWi_z1">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>40</y>
-     <width>51</width>
-     <height>211</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QListWidget" name="liWi_z2">
-   <property name="geometry">
-    <rect>
-     <x>90</x>
-     <y>40</y>
-     <width>51</width>
-     <height>211</height>
-    </rect>
    </property>
   </widget>
  </widget>

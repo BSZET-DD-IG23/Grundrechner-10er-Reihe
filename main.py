@@ -4,88 +4,101 @@ import sys
 
 class MainWindow(QtWidgets.QWidget):
     # feldern (widgets) einen Typen geben
-    # dasselbe wie: self.lbl_ergebnis = QtWidgets.QLabel()
-    lbl_ergebnis: QtWidgets.QLabel
-    lbl_z1: QtWidgets.QLabel
-    lbl_z2: QtWidgets.QLabel
-    liWi_z1: QtWidgets.QListWidget
-    liWi_z2: QtWidgets.QListWidget
-    pBtn_init: QtWidgets.QPushButton
-    rBtn_add: QtWidgets.QRadioButton
-    rBtn_sub: QtWidgets.QRadioButton
-    rBtn_div: QtWidgets.QRadioButton
-    rBtn_multi: QtWidgets.QRadioButton
+    # dasselbe wie: self.lblErgebnis = QtWidgets.QLabel()
+    lblErgebnis     : QtWidgets.QLabel
+    lbl_z1          : QtWidgets.QLabel
+    lbl_z2          : QtWidgets.QLabel
+
+    lstwNumOne      : QtWidgets.QListWidget
+    lstwNumTwo      : QtWidgets.QListWidget
+
+    btnInit         : QtWidgets.QPushButton
+
+    rdbtnAdd        : QtWidgets.QRadioButton
+    rdbtnSub        : QtWidgets.QRadioButton
+    rdbtnDiv        : QtWidgets.QRadioButton
+    rdbtnMult       : QtWidgets.QRadioButton
 
     def __init__(self, parent=None):
         super(self.__class__, self).__init__(parent)
+        # Lade UI-Datei und initialisiere Widgets
         uic.loadUi('main_window.ui', self)
 
-    def on_pBtn_init_pressed(self):
+    def on_btnInit_pressed(self):
         # reverse list: 10-0
         for i in range(10, 0 - 1, -1):
-            self.liWi_z1.addItem(str(i))
+            self.lstwNumOne.addItem(str(i))
 
         # normal list: 0-10
         for i in range(0, 10 + 1):
-            self.liWi_z2.addItem(str(i))
+            self.lstwNumTwo.addItem(str(i))
 
         # disable button since initializing once is enough
-        self.pBtn_init.setDisabled(True)
+        self.btnInit.setDisabled(True)
 
     def update_calc(self):
-        if not self.liWi_z1.currentItem():
-            self.lbl_ergebnis.setText("keine erste Zahl gewählt")
+        if not self.lstwNumOne.currentItem():
+            self.lblErgebnis.setText("keine erste Zahl gewählt")
             return
 
-        if not self.liWi_z2.currentItem():
-            self.lbl_ergebnis.setText("keine zweite Zahl gewählt")
+        if not self.lstwNumTwo.currentItem():
+            self.lblErgebnis.setText("keine zweite Zahl gewählt")
             return
 
+        # Note(Freemaker):
         # ich hasse Python
         # warum darf ich die Bedingung nicht auf mehre Zeilen schreiben
         # fucking whitespace sensitive my ass
         # und nach der funktionalität von Radioknöpfen ist es sowieso nicht möglich
         # aber es ist gefordert :/
-        if not self.rBtn_add.isChecked() and not self.rBtn_sub.isChecked() and not self.rBtn_div.isChecked() and not self.rBtn_multi.isChecked():
-            self.lbl_ergebnis.setText("keine Operation gewählt")
+
+        # Note(n0ffie): Is halt so. fuckt mich auch ab...
+        if not self.rdbtnAdd.isChecked() and not self.rdbtnSub.isChecked() and not self.rdbtnDiv.isChecked() and not self.rdbtnMult.isChecked():
+            self.lblErgebnis.setText("Keine Operation gewählt")
             return
 
-        z1 = int(self.liWi_z1.currentItem().text())
-        z2 = int(self.liWi_z2.currentItem().text())
+        z1 = int(self.lstwNumOne.currentItem().text())
+        z2 = int(self.lstwNumTwo.currentItem().text())
 
-        if z2 == 0 and self.rBtn_div.isChecked():
-            self.lbl_ergebnis.setText("division durch 0 nicht möglich")
+        if z2 == 0 and self.rdbtnDiv.isChecked():
+            self.lblErgebnis.setText("Division durch 0 nicht möglich")
             return
 
         result = 0
-        if self.rBtn_add.isChecked():
+        rest = 0
+        if self.rdbtnAdd.isChecked():
             result = z1 + z2
-        elif self.rBtn_sub.isChecked():
+        elif self.rdbtnSub.isChecked():
             result = z1 - z2
-        elif self.rBtn_div.isChecked():
-            result = z1 / z2
-        elif self.rBtn_multi.isChecked():
+        elif self.rdbtnDiv.isChecked():
+            result = z1 // z2
+            rest = z1 % z2
+        elif self.rdbtnMult.isChecked():
             result = z1 * z2
 
-        self.lbl_ergebnis.setText("Ergebnis: " + str(result))
+        if rest != 0:
+            self.lblErgebnis.setText("Ergebnis: " + str(result) + "  Rest: " + str(rest))
+        else:
+            self.lblErgebnis.setText("Ergebnis: " + str(result))
 
-    def on_liWi_z1_currentItemChanged(self):
+
+    def on_lstwNumOne_currentItemChanged(self):
         self.update_calc()
 
-    def on_liWi_z2_currentItemChanged(self):
+    def on_lstwNumTwo_currentItemChanged(self):
         self.update_calc()
 
     # nicht gefordert update kalkulation, auch wenn anderer Radioknopf ausgewählt wird
-    def on_rBtn_add_clicked(self):
+    def on_rdbtnAdd_clicked(self):
         self.update_calc()
 
-    def on_rBtn_sub_clicked(self):
+    def on_rdbtnSub_clicked(self):
         self.update_calc()
 
-    def on_rBtn_div_clicked(self):
+    def on_rdbtnDiv_clicked(self):
         self.update_calc()
 
-    def on_rBtn_multi_clicked(self):
+    def on_rdbtnMult_clicked(self):
         self.update_calc()
 
 if __name__ == "__main__":
