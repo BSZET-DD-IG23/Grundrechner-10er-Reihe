@@ -43,6 +43,7 @@ $ python -m venv ./.venv/
 </tbody>
 </table>
 
+
 2\. Installieren der Abh&auml;ngigkeiten
 
 ```bash
