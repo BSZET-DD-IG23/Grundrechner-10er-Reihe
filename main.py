@@ -5,19 +5,19 @@ import sys
 class MainWindow(QtWidgets.QWidget):
     # feldern (widgets) einen Typen geben
     # dasselbe wie: self.lblErgebnis = QtWidgets.QLabel()
-    lblErgebnis     : QtWidgets.QLabel
-    lbl_z1          : QtWidgets.QLabel
-    lbl_z2          : QtWidgets.QLabel
+    lblErgebnis: QtWidgets.QLabel
+    lbl_z1: QtWidgets.QLabel
+    lbl_z2: QtWidgets.QLabel
 
-    lstwNumOne      : QtWidgets.QListWidget
-    lstwNumTwo      : QtWidgets.QListWidget
+    lstwNumOne: QtWidgets.QListWidget
+    lstwNumTwo: QtWidgets.QListWidget
 
-    btnInit         : QtWidgets.QPushButton
+    btnInit: QtWidgets.QPushButton
 
-    rdbtnAdd        : QtWidgets.QRadioButton
-    rdbtnSub        : QtWidgets.QRadioButton
-    rdbtnDiv        : QtWidgets.QRadioButton
-    rdbtnMult       : QtWidgets.QRadioButton
+    rdbtnAdd: QtWidgets.QRadioButton
+    rdbtnSub: QtWidgets.QRadioButton
+    rdbtnDiv: QtWidgets.QRadioButton
+    rdbtnMult: QtWidgets.QRadioButton
 
     def __init__(self, parent=None):
         super(self.__class__, self).__init__(parent)
@@ -45,15 +45,10 @@ class MainWindow(QtWidgets.QWidget):
             self.lblErgebnis.setText("keine zweite Zahl gewählt")
             return
 
-        # Note(Freemaker):
-        # ich hasse Python
-        # warum darf ich die Bedingung nicht auf mehre Zeilen schreiben
-        # fucking whitespace sensitive my ass
-        # und nach der funktionalität von Radioknöpfen ist es sowieso nicht möglich
-        # aber es ist gefordert :/
-
-        # Note(n0ffie): Is halt so. fuckt mich auch ab...
-        if not self.rdbtnAdd.isChecked() and not self.rdbtnSub.isChecked() and not self.rdbtnDiv.isChecked() and not self.rdbtnMult.isChecked():
+        if (not self.rdbtnAdd.isChecked()
+                and not self.rdbtnSub.isChecked()
+                and not self.rdbtnDiv.isChecked()
+                and not self.rdbtnMult.isChecked()):
             self.lblErgebnis.setText("Keine Operation gewählt")
             return
 
@@ -81,7 +76,6 @@ class MainWindow(QtWidgets.QWidget):
         else:
             self.lblErgebnis.setText("Ergebnis: " + str(result))
 
-
     def on_lstwNumOne_currentItemChanged(self):
         self.update_calc()
 
@@ -100,6 +94,7 @@ class MainWindow(QtWidgets.QWidget):
 
     def on_rdbtnMult_clicked(self):
         self.update_calc()
+
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
